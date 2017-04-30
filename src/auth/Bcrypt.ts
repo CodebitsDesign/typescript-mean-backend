@@ -1,6 +1,6 @@
 import * as bcrypt from 'bcrypt'
 
-class PasswordCryptographer {
+export class PasswordCryptographer {
 
   private get saltRounds() {
     return 10;

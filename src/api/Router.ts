@@ -1,11 +1,11 @@
 import * as express from 'express';
-import * as bodyParser from 'body-parser';
+// import * as bodyParser from 'body-parser';
 import {simpleCrudRouter} from './endpoints/SimpleCrudRouter';
 import {middleware} from "./middleware";
 
 // Creates and configures an ExpressJS web server.
 class Router {
-
+  
   // ref to Express instance
   public express: express.Application;
 

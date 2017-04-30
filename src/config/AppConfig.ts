@@ -1,11 +1,11 @@
-import {AppProperties} from "ts-mean-models/app-properties.model";
+import {AppProperties} from "typescript-mean-models/dist/app-properties.model";
 
-class AppConfig {
+export class AppConfig {
 
   // configName is the name of the properties file.
   // There's an untracked folder properties at the same level as the src directory with the properties.
   public setAppConfig(configName: string) {
-    this._appConfig = require(`../../properties/${configName}.properties.json`);
+    this._appConfig = require(`../properties/${configName}.properties.json`);
   }
 
   public get appConfig(): AppProperties {

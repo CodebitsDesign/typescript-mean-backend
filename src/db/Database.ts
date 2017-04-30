@@ -1,9 +1,9 @@
 import * as mongo from 'mongodb'
-import {AppProperties} from "ts-mean-models/app-properties.model";
+import {AppProperties} from "typescript-mean-models/dist/app-properties.model";
 import {Db} from "mongodb";
 import {log} from "../logger/logger";
 
-class Database {
+export class Database {
 
   constructor(
 
@@ -31,6 +31,7 @@ class Database {
     // Connect to the db
     this._mongoClient.connect(this.mongoUri(appConfig), (err, db) => {
       if(!err) {
+        log.info('Successfully Connected to Database');
         this._database = db;
         if (callback) {
           callback(db);

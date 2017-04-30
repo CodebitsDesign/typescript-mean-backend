@@ -19,11 +19,13 @@ describe('bcrypt', () => {
       }, (err) => {
         log.error('Error while decrypting:');
         log.error(err);
-      })
+        done();
+      });
     }, (err) => {
       log.error('Error while encrypting:');
       log.error(err);
-    })
+      done();
+    });
   });
 
 });

@@ -15,6 +15,7 @@ describe('CRUD', () => {
 
     const start = () => {
       doCreate();
+      done();
     };
 
     const doReadOne = (id: string) => {
@@ -25,7 +26,6 @@ describe('CRUD', () => {
         expect(item._id).to.exist;
 
         doUpdate(item);
-
       });
     };
 
@@ -36,7 +36,6 @@ describe('CRUD', () => {
         expect(item.text).to.equal("hello world!");
 
         doDelete(item._id);
-
       });
     };
 
@@ -44,7 +43,6 @@ describe('CRUD', () => {
       crud.delete(id, 'items', (err, result) => {
         expect(err).to.equal(null);
         expect(result.deletedCount).to.equal(1);
-        done();
       })
 
     };
@@ -58,7 +56,6 @@ describe('CRUD', () => {
         const insertedId = result.insertedId;
 
         doReadOne(insertedId);
-
       })
     };
 
@@ -69,7 +66,6 @@ describe('CRUD', () => {
         expect(result.modifiedCount).to.equal(1);
 
         doReadTwo(item._id);
-
       })
     };
 

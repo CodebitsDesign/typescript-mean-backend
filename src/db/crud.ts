@@ -1,7 +1,7 @@
 import * as mongo from 'mongodb'
 import {database} from "./Database";
 
-class Crud {
+export class Crud {
 
   read(id:string, collectionName: string, cb:(err, item?) => void) {
     database.database.collection(collectionName, (err, collection) => {

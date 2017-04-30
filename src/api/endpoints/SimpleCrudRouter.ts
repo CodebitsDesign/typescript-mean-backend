@@ -35,14 +35,14 @@ export class SimpleCrudRouter {
         res.status(500).send({
           message: "Server error",
           status: res.status
-        })
+        });
       } else {
         res.status(200)
             .send({
               message: 'Success',
               status: res.status,
               data
-            })
+            });
       }
     });
 

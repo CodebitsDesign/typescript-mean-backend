@@ -2,11 +2,24 @@
   "name": "typescript-mean-backend",
   "version": "0.0.0",
   "description": "Typescript MEAN Backend, MongoDB-Express-Node App for `typescript-mean-seed` git-submodule.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*",
+    "properties/*.json"
+  ],
   "scripts": {
-    "test": "mocha --reporter spec --compilers ts:ts-node/register '**/*.test.ts'",
+    "lint": "tslint \"src/**/*.ts\"",
+    "clean": "rimraf dist",
+    "html": "cd ./src && find . \\( -name '*.html' -or -name '*.css' -or -name '*.json' \\) -type f -exec cp --parents {} ../dist \\;",
+    "tsc": "tsc",
+    "build": "yarn run clean && yarn run tsc",
+    "test-spec": "mocha dist/**/*.test.js -R spec --bail",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- \"dist/**/*.test.js\" -R spec --bail",
+    "test": "yarn run build && yarn run lint && yarn run html && yarn run test-cov",
     "start": "tsc && node dist/index.js",
-    "spec": "mocha --reporter spec --compilers ts:ts-node/register --grep ${TEST} '**/*.test.ts'"
+    "spec": "mocha --reporter spec --compilers ts:ts-node/register --recursive --grep \"${TEST}\" '**/*.test.ts'",
+    "nyan": "mocha --reporter nyan --compilers ts:ts-node/register --recursive --grep \"${TEST}\" '**/*.test.ts'",
+    "tap": "mocha --reporter tap --compilers ts:ts-node/register --recursive --grep \"${TEST}\" '**/*.test.ts'"
   },
   "author": "Seokjin Seo <codebits.design@gmail.com>",
   "license": "MIT",
@@ -17,7 +30,7 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "mongodb": "^2.2.26",
-    "typescript-mean-models": "^0.0.1",
+    "typescript-mean-models": "^0.0.8",
     "winston": "^2.3.1",
     "winston-color": "^1.0.0"
   },
@@ -28,11 +41,16 @@
     "@types/express": "^4.0.33",
     "@types/mocha": "^2.2.32",
     "@types/mongodb": "^2.1.41",
-    "@types/node": "^6.0.46",
+    "@types/node": "^7.0.14",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "mocha": "^3.1.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.3.0",
+    "rimraf": "^2.5.4",
+    "superagent": "^3.5.2",
     "ts-node": "^3.0.2",
-    "typescript": "^2.3.0"
+    "tslint": "^5.1.0",
+    "typescript": "^2.3.0",
+    "typings": "^2.1.1"
   }
 }

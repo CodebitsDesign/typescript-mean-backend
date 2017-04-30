@@ -15,32 +15,34 @@ describe('Simple CRUD Route Test', () => {
 
   it('should return the item', (done) => {
 
-    crud.create({"hello": "world"}, 'items', (err, item) => {
+    crud.create({ "hello": "world" }, 'items', (err, item) => {
       chai.request(router).get(`/api/v1/items/${item.insertedId}`)
-          .end((err, res) => {
-            expect(res).to.have.status(200);
-            expect(res.body.data.hello).to.equal('world');
-            done();
-          });
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          expect(res.body.data.hello).to.equal('world');
+          done();
+        });
     });
 
   });
 
   it('should work with promise', (done) => {
-    crud.create({"hello": "world"}, 'items', (err, item) => {
+    crud.create({ "hello": "world" }, 'items', (err, item) => {
       chai.request(router).get(`/api/v1/items/${item.insertedId}`)
-          .then(res => {
-            expect(res).to.have.status(200);
-            expect(res.body.data.hello).to.equal('world');
-            done();
-          }, err => {
-            log.error('Error on GET request:');
-            log.error(err);
-            done();
-          })
-          .catch(function (err) {
-            throw err;
-          });
+        .then(res => {
+          expect(res).to.have.status(200);
+          expect(res.body.data.hello).to.equal('world');
+          done();
+        }, err => {
+          log.error('Error on GET request:');
+          log.error(err);
+          done();
+        })
+        .catch(function(err) {
+          // throw err;
+          log.error('Error while Simple CRUD testing');
+          log.error(err);
+        });
     });
   })
 

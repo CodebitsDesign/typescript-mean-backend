@@ -1,11 +1,27 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
+    "outDir": "dist",
     "target": "es6",
+    "lib": ["es6"],
+    "types": ["reflect-metadata", "node"],
+    "typeRoots": ["node_modules/@types"],
     "module": "commonjs",
-    "outDir": "dist"
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "removeComments": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "inlineSources": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "properties/*.json"
   ],
   "exclude": [
     "node_modules"
